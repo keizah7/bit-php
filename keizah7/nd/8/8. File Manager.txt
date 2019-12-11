@@ -1,0 +1,81 @@
+﻿8. File Manager
+
+
+Bendri reikalavimai
+
+
+Failų valdymo sistemai rekomenduojama struktūrą:
+work darbinis flderis, kuriame saugomi visi sukurti ar įkelti failai;
+index.php pagrindis programos failas per kurį vyksta valdymas;
+login.php failas su prisijungimo forma;
+bootstrap.php failas su programos nustatymais;
+uploader.php failų įkėlimo biblioteka;
+style.css CSS stiliaus failas;
+Jeigu yra poreikis galima pridėti papildomus failus.
+
+
+Failų valdymo sistema turi atrodyti patraukliai ir tvarkingai būti atvaizduojama su įvairių dydžių ekranais iki 1024px pločio. Pritaikymas mažesniuose (mobilių įrenginių) ekranuose būtų privalumas.
+
+
+Failų sistema turi būti apsaugota slaptažodžiu. Nesuvedus slaptažodžio neturi būti leidžiama dirbti su failais.
+
+
+Kaip uploadinami failai galima pasižiūrėti čia: https://www.w3schools.com/php/php_file_upload.asp
+
+
+Papildomai galite padaryti galimybę trinti 9 punkte sukurtus folderius.
+
+
+
+
+1.
+Sukurkite galimybę, iš html textarea įrašytų tekstą į failą text.txt.
+
+
+2.
+Patobulinkit pirmą punktą taip, kad programa galėtų redaguoti failą text.txt
+
+
+3.
+Pridėkite mygtuką “naujas failas”, ir input laukelį failo vardui įrašyti. Padarykite taip, kad įrašius vardą ir paspaudus mygtuką susikurtų naujas tuščias failas, kurį būtų galima redaguoti. Prie kiekvieno failo patys pridėkite išplėtimą txt, kad vartotojai negalėtų kurti kitokio tipo failų. Padarykite galimybę failą ištrinti.
+
+
+4.
+Pasinaudokite kodu:
+if ($handle = opendir('.')) {
+   while (false !== ($entry = readdir($handle))) {
+           echo $entry. '<br>';
+   }
+   closedir($handle);
+}
+Modifikuokite jį taip, kad jis spausdintų folderyje esančių txt failų sąrašą.
+
+
+5.
+Failų sąrašą perdarykite į aktyvius linkus, kuriuos paspaudus atsidarytų textarea su failo turiniu.
+
+
+6.
+Pridėkite galimybę failų sąraše rodyti jpg tipo failus.
+
+
+7.
+Padarykite galimybę įkelti jpg paveiksliuką, o įkeltą paveiksliuką ištrinti.
+
+
+8.
+Padarykite taip, kad paspaudus ant jpg failo sąraše vietoj textarea atsidarytų jpg paveiksliukas.
+
+
+9.
+Padarykite galimybę kurti tuščius folderius
+
+
+10.
+Padarykite galimybę sukurtuose folderiuose dirbti taip pat, kaip ir pagrindiniame.
+
+
+Darbo pabaigoje įsivertinkite save pagal atliktų (ir veikiančių) punktų kiekį. (pvz padarėte veikiančius 7 punktus, jūsų pažimys 7 ir panašiai ) Punktai turi būti atliekami nuosekliai pagal eiliškumą.
+
+
+Tikėtis išlaikyti praktikos egzaminą gali tikėtis tik tie, kurie save įvertino 5 ar didesniu pažymiu!
