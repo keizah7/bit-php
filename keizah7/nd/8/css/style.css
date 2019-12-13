@@ -1,0 +1,13 @@
+html,
+body {
+    font-family: 'Open Sans';
+}
+
+figure img {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.noflex {
+    display: block;
+}
