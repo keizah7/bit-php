@@ -6,7 +6,7 @@
         <div class="panel-block noflex">
             <div class="columns">
                 <div class="column">
-                    <form method="POST" action="<?=$url?>">
+                    <form method="POST" action="<?=url()?>">
                         <input name="directory" type="hidden" value="<?=$directory['directory'] // uzkoduoti ?>">
                         <div class="field">
                             <div class="control">
@@ -22,7 +22,8 @@
                             <button class="button is-primary is-fullwidth">Redaguoti</button>
                             </div>
                             <div class="control is-expanded">
-                            <a href="<?=$url?>&action=deleteFile" class="button is-danger is-fullwidth">Ištrinti</a>
+                                
+                            <a href="<?=url(['action'=>'deleteFile'])?>" class="button is-danger is-fullwidth">Ištrinti</a>
                             </div>
                         </div>
                         <p class="help is-danger has-text-left"><?=isset($_SESSION['error']) ? $_SESSION['error'] : ''?></p>

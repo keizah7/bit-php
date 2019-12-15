@@ -40,22 +40,20 @@ redirectIfNotSigned();
                     <div class="panel-block">
                         <nav class="breadcrumb" aria-label="breadcrumbs">
                             <ul>
-                                <!-- <li class="is-active"><a href="#">Dir</a></li> -->
-                                <li><?=$breadcrumb?></li>
+                                <li class="is-active"><?=$breadcrumb?></li>
                             </ul>
                         </nav>
                     </div>
-
                     <div class="panel-block">
                         <div class="columns">
                             <div class="column auto">
-                                <a href="<?=$url?>action=createFile" class="button is-link is-outlined">Sukurti failą</a>
+                                <a href="<?=url(['action'=>'createFile'])?>" class="button is-link is-outlined">Sukurti failą</a>
                             </div>
                             <div class="column auto">
-                                <a href="<?=$url?>action=createDir" class="button is-link is-outlined">Sukurti aplanką</a>
+                                <a href="<?=url(['action'=>'createDir'])?>" class="button is-link is-outlined">Sukurti aplanką</a>
                             </div>
                             <div class="column auto">
-                                <a href="<?=$url?>action=uploadImg" class="button is-link is-outlined">Įkelti nuotrauką</a>
+                                <a href="<?=url(['action'=>'uploadImg'])?>" class="button is-link is-outlined">Įkelti nuotrauką</a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +62,7 @@ redirectIfNotSigned();
                         printBackwardsLink();
                         printFiles();
                     ?>
-
+                    
                 </nav>
             </div>
         </div>

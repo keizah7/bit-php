@@ -41,7 +41,7 @@ switch ($action) {
             $imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             if (file_exists($target_file)) setError('Tokia nuotrauka jau egzistuoja');
-            elseif ($_FILES['file']['size'] > 500000)  setError('Nuotraukos dydis per didelis');
+            elseif ($_FILES['file']['size'] > 500000) setError('Nuotraukos dydis per didelis');
             elseif ($imageFileType != 'jpg') setError('Netinkamas formatas');
             else {
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) setNotification('Nuotrauka buvo sėkmingai įkelta');
@@ -53,8 +53,8 @@ switch ($action) {
     case 'delete':
         $directoryName = decodeParameter($_GET['id'])['directory'];
         if (is_dir($directoryName)) {
-            // rmdir($directoryName);
-            system('rm -rf ' . escapeshellarg($directoryName)); // only UNIX !!
+            // system('rm -rf ' . escapeshellarg($directoryName)); // only UNIX !!
+            deleteTree($directoryName);
         }
         break;
 
@@ -64,9 +64,9 @@ switch ($action) {
         preg_match_all('/(.+)\//m', $fileName, $matches, PREG_SET_ORDER, 0);
         $last = sizeof($matches) > 0 ? $matches[0][1] : '.';
 
-        $last = base64_encode(json_encode([
+        $last = encodeParameter([
             'directory' => $last
-        ]));
+        ]);
         
         if (file_exists($fileName)) {
             unlink($fileName);
@@ -84,9 +84,7 @@ switch ($action) {
         $fileContent = file_get_contents($fileName);
 
         if(isset($_POST['description']))
-        {
-            // $newFileName = str_replace('.txt', '', $_POST['directory'] . DIRECTORY_SEPARATOR . $_POST['name']);
-        
+        {        
             if (file_exists($fileName)) {
                 file_put_contents($fileName, htmlspecialchars($_POST['description']));
                 $fileContent = file_get_contents($fileName);

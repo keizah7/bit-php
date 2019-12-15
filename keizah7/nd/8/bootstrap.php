@@ -14,4 +14,3 @@ $directory          = isset($_GET['directory']) ? decodeParameter($_GET['directo
 $currentDirectory   = is_dir($directory['directory']) ? $directory['directory']: DEFAULT_PATH;
 $files              = createDirTreeFrom($currentDirectory);
 $breadcrumb         = $directory['directory'] . DIRECTORY_SEPARATOR;
-$url                = $_SERVER['PHP_SELF'] . '?' . (strlen($_SERVER['QUERY_STRING']) > 0 ? $_SERVER['QUERY_STRING'] . '&' : '');

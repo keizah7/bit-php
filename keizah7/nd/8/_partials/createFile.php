@@ -6,7 +6,7 @@
         <div class="panel-block noflex">
             <div class="columns">
                 <div class="column">
-                    <form method="POST" action="<?=$url?>">
+                    <form method="POST" action="<?=url()?>">
                         <div class="field">
                             <div class="control">
                             <input class="input" name="name" type="text" placeholder="Failo pavadinimas.txt">

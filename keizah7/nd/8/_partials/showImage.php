@@ -9,10 +9,10 @@
                 <figure>
                     <img src="<?=$fileName?>">
                 </figure>
-                    <form method="POST" action="<?=$url?>">
+                    <form method="POST" action="<?=url()?>">
                         <div class="field is-grouped">
                             <div class="control is-expanded">
-                            <a href="<?=$url?>&action=deleteFile" class="button is-danger is-fullwidth">Ištrinti</a>
+                            <a href="<?=url(['action'=>'deleteFile'])?>" class="button is-danger is-fullwidth">Ištrinti</a>
                             </div>
                         </div>
                     </form>

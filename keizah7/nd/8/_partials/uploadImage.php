@@ -6,7 +6,7 @@
         <div class="panel-block">
             <div class="columns">
                 <div class="column">
-                    <form action="<?=$url?>" method="post" enctype="multipart/form-data">
+                    <form action="<?=url()?>" method="post" enctype="multipart/form-data">
                         <div class="field has-addons">
                             <div id="file-js-example" class="file has-name">
                                 <label class="file-label">

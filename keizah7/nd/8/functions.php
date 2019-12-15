@@ -31,34 +31,33 @@ function setNotification($text)
  */
 function showLink()
 {
-    if (isset($_SESSION['logged'])) {
-        echo '<a href="login.php">Prisijungti</a>';
-    } else {
-        echo '<a href="logout.php">Atsijungti</a>';
-    }
+    echo isset($_SESSION['logged']) ? '<a href="login.php">Prisijungti</a>' : '<a href="logout.php">Atsijungti</a>';
 }
-
-function isFile(string $string): ?string
-{
-    preg_match_all('/\.([a-z]+)/', $string, $matches, PREG_SET_ORDER, 0);
-
-    if (isset($matches[0])) {
-        return $matches[0][1];
-    } else return null;
-}
-
 
 /**
- * Creates multidimensional array with directories and files
+ * Check if @param is file and return extension
+ *
+ * @param string $string
+ * @return string|null
+ */
+function isFile(string $string): ?string
+{
+    $info = pathinfo($string);
+
+    return isset($info['extension']) ? $info['extension'] : null;
+}
+
+/**
+ * Creates multidimensional array tree of directory and files structure
  *
  * @param string $parentDirectory
  * @return array
  */
 function createDirTreeFrom(string $parentDirectory): array
 {
-    $files  = [];
-    $dirs   = [];
-    $directories = array_diff(scandir($parentDirectory), ['.', '..']);
+    $files          = [];
+    $dirs           = [];
+    $directories    = array_diff(scandir($parentDirectory), ['.', '..']);
     
     foreach ($directories as $value)
     {
@@ -104,33 +103,44 @@ function decodeParameter(string $string)
  */
 function printFiles()
 {
-    global $files, $currentDirectory, $url;
+    global $files, $currentDirectory;
     foreach ($files as $key => $value) {
-        $name       = isset($value['name']) ? $value['name'] : $key;
-        $type       = isset($value['type']) ? $value['type'] : '';
-        $parameters = '';
+        $name                   = isset($value['name']) ? $value['name'] : $key;
+        $type                   = isset($value['type']) ? $value['type'] : '';
         $directory['directory'] = $currentDirectory . DIRECTORY_SEPARATOR . $name;
 
         if ($type) {
             if ($type === 'jpg') {
-                $icon       = 'far fa-image';
-                $parameters = 'action=showImage&id='. encodeParameter($directory);
+                $icon   = 'far fa-image';
+                $url    = url([
+                    'action'    => 'showImage',
+                    'id'        => encodeParameter($directory)
+                ]);
             } else if ($type === 'txt') {
-                $icon       = 'far fa-file-alt';
-                $parameters = 'action=showFile&id='. encodeParameter($directory);
+                $icon   = 'far fa-file-alt';
+                $url    = url([
+                    'action'    => 'showFile',
+                    'id'        => encodeParameter($directory)
+                ]);
             } else {
-                $icon = 'far fa-file';
+                $icon   = 'far fa-file';
+                $url    = url();
             }
-            // $directory['directory'] = '.';
-            // echo $directory['directory'];
-            echo '<a href="'. $url . $parameters .'" class="panel-block"><span class="panel-icon"><i class="'.$icon.'"></i></span>'.$name.'</a>';
+            echo '<a href="'.$url.'" class="panel-block"><span class="panel-icon"><i class="'.$icon.'"></i></span>'.$name.'</a>';
         } else {
-            $icon = 'far fa-folder';
-            // $directory['directory'] = $currentDirectory . DIRECTORY_SEPARATOR . $name;
+            $icon   = 'far fa-folder';
+            $url    = url([
+                'directory' => encodeParameter($directory)
+            ]);
 
             echo '<div class="panel-block is-active"><span class="panel-icon"><i class="'.$icon.'"></i></span>';
-            echo '<a href="?directory='.encodeParameter($directory).'" class="">'.$name.' </a>';
-            echo '&emsp;<a href="'.$url.'action=delete&id='.encodeParameter($directory).'"><i class="far fa-trash-alt"></i></a></div>';
+            echo '<a href="'.$url.'" class="">'.$name.' </a>';
+
+            $url = url([
+                'action'    => 'delete',
+                'id'        => encodeParameter($directory)
+            ]);
+            echo '&emsp;<a href="'.$url.'"><i class="far fa-trash-alt"></i></a></div>';
         }
     }
 }
@@ -166,3 +176,34 @@ function redirectIfNotSigned()
         die();
     }
 }
+
+/**
+ * Creates url
+ *
+ * @param array $array
+ * @return string
+ */
+function url(array $array = []): string
+{
+    $path = $_SERVER['PHP_SELF'] . '?';
+    parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $query);
+    $query = array_merge($query, $array);
+    $query = http_build_query($query);
+
+    return $path . $query;
+}
+
+/**
+ * Deletes directories tree with files
+ *
+ * @param string $directory
+ * @return void
+ */
+function deleteTree(string $directory) {
+    $files = array_diff(scandir($directory), array('.','..'));
+
+    foreach ($files as $file) {
+        (is_dir("$directory/$file")) ? deleteTree("$directory/$file") : unlink("$directory/$file");
+    }
+    return rmdir($directory);
+} 

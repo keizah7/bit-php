@@ -6,7 +6,7 @@
         <div class="panel-block">
             <div class="columns">
                 <div class="column">
-                    <form action="<?=$url?>" method="POST">
+                    <form action="<?=url()?>" method="POST">
                         <div class="field has-addons">
                             <div class="control">
                                 <input name="name" class="input" type="text" placeholder="Aplankalo pavadinimas" autofocus>
