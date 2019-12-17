@@ -1,0 +1,12 @@
+{
+    "name": "Masinos",
+    "description": "vrum vrum",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    },
+    "require": {
+        "symfony/http-foundation": "^5.0"
+    }
+}
