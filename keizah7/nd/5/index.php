@@ -76,3 +76,31 @@ else echo '<h3>Skaičius ' . $a . ' yra pakartotas ' . $k1 . ' kartų, o ' . $b 
 // $sk2 = $i - $sk1;
 
 // echo "<h3>Skaičius $a yra pakartotas $sk1 kartų, o $b - $sk2 kartų.</h3>";
+
+
+
+// 1. Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
+
+$array = [];
+$biggerThanTen = 0;
+$max = 0;
+
+foreach (range(1, 10) as $key => $value) {
+    foreach(range(1, 5) as $i => $number) {
+        $random = rand(5, 25);
+        $array[$key][] = $random;
+        if($random > 10) $biggerThanTen++;
+        if($random > $max) $max = $random;
+    }
+} // 1.
+
+/* 2. Naudodamiesi 1 uždavinio masyvu:
+    a. Suskaičiuokite kiek masyve yra elementų didesnių už 10;
+    b. Raskite didžiausio elemento reikšmę;
+    c. Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
+    d. Visus masyvus “pailginkite” iki 7 elementų
+    e. Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą.
+    T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai  */
+
+// _dc($array);
+echo $biggerThanTen;
