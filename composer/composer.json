@@ -1,0 +1,12 @@
+{
+    "name": "Vezimai ir Masinos",
+    "description": "Uuuuuzia Br brbmmmm brmmm",
+    "autoload": {
+        "psr-4": {
+        "App\\": "app"
+        }
+    },
+    "require": {
+        "symfony/http-foundation": "^5.0"
+    }
+}
