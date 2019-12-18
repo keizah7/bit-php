@@ -1,15 +1,14 @@
 <?php
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
-if($action) redirectIfNotSigned();
+if ($action) redirectIfNotSigned();
 
 switch ($action) {
     case 'createFile':
-        if(isset($_POST['name']))
-        {
+        if (isset($_POST['name'])) {
             $newFileName = str_replace('.txt', '', $_POST['directory'] . DIRECTORY_SEPARATOR . $_POST['name']);
-        
-            if (!file_exists($newFileName .'.txt') && !empty($_POST['name'])) {
+
+            if (!file_exists($newFileName . '.txt') && !empty($_POST['name'])) {
                 $text = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
                 file_put_contents($newFileName . '.txt', $text);
                 setNotification('Failas sėkmingai sukurtas');
@@ -20,10 +19,9 @@ switch ($action) {
         break;
 
     case 'createDir':
-        if(isset($_POST['name']))
-        {
+        if (isset($_POST['name'])) {
             $newDirectoryName = $_POST['directory'] . DIRECTORY_SEPARATOR . $_POST['name'];
-        
+
             if (!file_exists($newDirectoryName)) {
                 mkdir($newDirectoryName, 0777);
                 setNotification('Aplankas sėkmingai sukurtas');
@@ -67,10 +65,10 @@ switch ($action) {
         $last = encodeParameter([
             'directory' => $last
         ]);
-        
+
         if (file_exists($fileName)) {
             unlink($fileName);
-            header('Location: dashboard.php?directory='.$last.'');
+            header('Location: dashboard.php?directory=' . $last . '');
             die();
         }
         break;
@@ -83,8 +81,7 @@ switch ($action) {
         $fileName = decodeParameter($_GET['id'])['directory'];
         $fileContent = file_get_contents($fileName);
 
-        if(isset($_POST['description']))
-        {        
+        if (isset($_POST['description'])) {
             if (file_exists($fileName)) {
                 file_put_contents($fileName, htmlspecialchars($_POST['description']));
                 $fileContent = file_get_contents($fileName);

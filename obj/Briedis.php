@@ -1,8 +1,8 @@
 <?php
-namespace Vietove;
 
+namespace Vietove;
 
 class Briedis extends Miskas
 {
-    protected $vardas = 'Rudolfas'; 
+    protected $vardas = 'Rudolfas';
 }

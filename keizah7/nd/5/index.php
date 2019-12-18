@@ -64,7 +64,8 @@ $k2         = $maxKiekis;
  * @param int $value
  * @return float
  */
-function divisionByMin($value) {
+function divisionByMin($value)
+{
     global $min;
     return $value / $min;
 }
@@ -86,11 +87,11 @@ $biggerThanTen = 0;
 $max = 0;
 
 foreach (range(1, 10) as $key => $value) {
-    foreach(range(1, 5) as $i => $number) {
+    foreach (range(1, 5) as $i => $number) {
         $random = rand(5, 25);
         $array[$key][] = $random;
-        if($random > 10) $biggerThanTen++;
-        if($random > $max) $max = $random;
+        if ($random > 10) $biggerThanTen++;
+        if ($random > $max) $max = $random;
     }
 } // 1.
 

@@ -1,6 +1,6 @@
 <?php
 
-class BriedzioSenelis 
+class BriedzioSenelis
 {
     protected $svoris = 45;
     private $alus = 'Daug';
@@ -12,7 +12,6 @@ class BriedzioSenelis
     {
         echo '<br>Briedzio SENIO KOnstruktorius<br>';
     }
-
 }
 
 class BriedzioTevas extends BriedzioSenelis
@@ -26,28 +25,27 @@ class BriedzioTevas extends BriedzioSenelis
         parent::__construct();
         echo '<br>Briedzio TEVO KOnstruktorius<br>';
     }
-
 }
 
 
 class BriedisMiskinis extends BriedzioTevas
 {
-    
+
     protected $laisvalaikis = 'Instagram';
 
     static public $kazkas = 'BLABLA';
 
-    
+
     public function __construct()
     {
         // BriedzioSenelis::__construct();
-        
+
         echo '<br>Briedzio KOnstruktorius<br>';
     }
 
 
-    
-    
+
+
     public function garsas()
     {
         echo '<br>Muuuuuuuuu<br>';
@@ -69,8 +67,6 @@ class BriedisMiskinis extends BriedzioTevas
         }
         $this->svoris = $svoris;
     }
-
-
 }
 
 
@@ -87,5 +83,3 @@ echo $obj1->getSvoris();
 $obj1->garsas();
 
 echo BriedisMiskinis::$kazkas;
-
-

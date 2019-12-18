@@ -15,7 +15,6 @@ class ArbuzoSenelis
     {
         echo '<br>Senelis su paladziu<br>';
         self::senelisPasake();
-        
     }
 
     public function setSvoris($svoris)
@@ -42,10 +41,10 @@ class ArbuzoTevas extends ArbuzoSenelis
 
 class Arbuzas extends ArbuzoTevas
 {
-    
 
-    
-    public function __construct($svoris=99)
+
+
+    public function __construct($svoris = 99)
     {
         self::senelisPasake();
         $this->svoris = $svoris;
@@ -55,7 +54,7 @@ class Arbuzas extends ArbuzoTevas
 
         parent::__construct();
     }
-    
+
     public function getSvoris()
     {
         return $this->svoris;
@@ -74,13 +73,10 @@ class Arbuzas extends ArbuzoTevas
     {
         echo $this->senelioPaladis;
     }
-
-
-
 }
 
 
-$obj1 = new Arbuzas(2,445);
+$obj1 = new Arbuzas(2, 445);
 // $obj2 = new Arbuzas;
 $obj3 = $obj1;
 
@@ -100,4 +96,3 @@ echo '<br>';
 var_dump($obj2);
 echo '<br>';
 var_dump($obj3);
-

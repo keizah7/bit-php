@@ -1,4 +1,4 @@
-<?php require '_partials/header.php'?>
+<?php require '_partials/header.php' ?>
 
 <div class="hero-body">
     <div class="container has-text-centered">
@@ -26,4 +26,4 @@
     </div>
 </div>
 
-<?php require '_partials/footer.php'?>
+<?php require '_partials/footer.php' ?>

@@ -47,7 +47,8 @@ echo '<br>Maksimalų masyvo gylis yra ' . countArrayDepth($array);
  *
  * @return array
  */
-function getArrayValue() {
+function getArrayValue()
+{
     if (rand(0, 100) < PROC) return rand(0, 100);
     else {
         $arrayLength    = rand(1, 5); // vidino masyvų ilgis
@@ -64,7 +65,8 @@ function getArrayValue() {
  * @param array $array
  * @return void
  */
-function printArray($array) {
+function printArray($array)
+{
     global $count, $suma;
     $count++;
     $bg = substr(md5(rand()), 0, 6);
@@ -88,7 +90,8 @@ function printArray($array) {
  * @param array $array
  * @return int
  */
-function countArrayDepth($array) {
+function countArrayDepth($array)
+{
     $max = 1;
 
     foreach ($array as $value) {

@@ -5,4 +5,4 @@
 $colors         = ['red', 'blue', 'black'];
 $randomColor    = array_rand($colors);
 
-echo '<body style="background:'.$colors[$randomColor].';"></body>';
+echo '<body style="background:' . $colors[$randomColor] . ';"></body>';

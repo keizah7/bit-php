@@ -12,24 +12,24 @@ redirectIfNotSigned();
 
             switch (isset($_GET['action']) ? $_GET['action'] : '') {
                 case 'createFile':
-                    require PARTS.'createFile.php';
+                    require PARTS . 'createFile.php';
                     break;
 
                 case 'createDir':
-                    require PARTS.'createDir.php';
+                    require PARTS . 'createDir.php';
                     break;
 
                 case 'uploadImg':
-                    require PARTS.'uploadImage.php';
+                    require PARTS . 'uploadImage.php';
                     break;
 
                 case 'showImage':
-                    require PARTS.'showImage.php';
+                    require PARTS . 'showImage.php';
                     break;
-            
+
                 case 'showFile':
-                    require PARTS.'showFile.php';
-                    break;                    
+                    require PARTS . 'showFile.php';
+                    break;
             }
 
             ?>
@@ -40,33 +40,33 @@ redirectIfNotSigned();
                     <div class="panel-block">
                         <nav class="breadcrumb" aria-label="breadcrumbs">
                             <ul>
-                                <li class="is-active"><?=$breadcrumb?></li>
+                                <li class="is-active"><?= $breadcrumb ?></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="panel-block">
                         <div class="columns">
                             <div class="column auto">
-                                <a href="<?=url(['action'=>'createFile'])?>" class="button is-link is-outlined">Sukurti failą</a>
+                                <a href="<?= url(['action' => 'createFile']) ?>" class="button is-link is-outlined">Sukurti failą</a>
                             </div>
                             <div class="column auto">
-                                <a href="<?=url(['action'=>'createDir'])?>" class="button is-link is-outlined">Sukurti aplanką</a>
+                                <a href="<?= url(['action' => 'createDir']) ?>" class="button is-link is-outlined">Sukurti aplanką</a>
                             </div>
                             <div class="column auto">
-                                <a href="<?=url(['action'=>'uploadImg'])?>" class="button is-link is-outlined">Įkelti nuotrauką</a>
+                                <a href="<?= url(['action' => 'uploadImg']) ?>" class="button is-link is-outlined">Įkelti nuotrauką</a>
                             </div>
                         </div>
                     </div>
 
                     <?php
-                        printBackwardsLink();
-                        printFiles();
+                                                        printBackwardsLink();
+                                                        printFiles();
                     ?>
-                    
+
                 </nav>
             </div>
         </div>
     </div>
 </section>
 
-<?php require '_partials/footer.php'?>
+<?php require '_partials/footer.php' ?>

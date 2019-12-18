@@ -6,6 +6,7 @@ require 'bootstrap.php';
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,12 +41,12 @@ require 'bootstrap.php';
                                 <ul>
                                     <li class="is-active"><a href="./">Pagrindinis</a></li>
                                     <?php
-                                        if (isset($_SESSION['logged'])) {
-                                            echo '<li><a href="dashboard.php">Prietaisų skydelis</a></li>';
-                                            echo '<li><a href="logout.php">Atsijungti</a></li>';
-                                        } else {
-                                            echo '<li><a href="login.php">Prisijungti</a></li>';
-                                        }
+                                    if (isset($_SESSION['logged'])) {
+                                        echo '<li><a href="dashboard.php">Prietaisų skydelis</a></li>';
+                                        echo '<li><a href="logout.php">Atsijungti</a></li>';
+                                    } else {
+                                        echo '<li><a href="login.php">Prisijungti</a></li>';
+                                    }
                                     ?>
                                 </ul>
                             </div>
@@ -54,4 +55,3 @@ require 'bootstrap.php';
                 </div>
             </nav>
         </div>
-        

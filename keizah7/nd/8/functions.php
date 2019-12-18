@@ -58,10 +58,9 @@ function createDirTreeFrom(string $parentDirectory): array
     $files          = [];
     $dirs           = [];
     $directories    = array_diff(scandir($parentDirectory), ['.', '..']);
-    
-    foreach ($directories as $value)
-    {
-        if(is_dir($parentDirectory . DIRECTORY_SEPARATOR . $value)) {
+
+    foreach ($directories as $value) {
+        if (is_dir($parentDirectory . DIRECTORY_SEPARATOR . $value)) {
             $dirs[$value] = createDirTreeFrom($parentDirectory . DIRECTORY_SEPARATOR . $value);
         } else {
             $files[] = [
@@ -126,21 +125,21 @@ function printFiles()
                 $icon   = 'far fa-file';
                 $url    = url();
             }
-            echo '<a href="'.$url.'" class="panel-block"><span class="panel-icon"><i class="'.$icon.'"></i></span>'.$name.'</a>';
+            echo '<a href="' . $url . '" class="panel-block"><span class="panel-icon"><i class="' . $icon . '"></i></span>' . $name . '</a>';
         } else {
             $icon   = 'far fa-folder';
             $url    = url([
                 'directory' => encodeParameter($directory)
             ]);
 
-            echo '<div class="panel-block is-active"><span class="panel-icon"><i class="'.$icon.'"></i></span>';
-            echo '<a href="'.$url.'" class="">'.$name.' </a>';
+            echo '<div class="panel-block is-active"><span class="panel-icon"><i class="' . $icon . '"></i></span>';
+            echo '<a href="' . $url . '" class="">' . $name . ' </a>';
 
             $url = url([
                 'action'    => 'delete',
                 'id'        => encodeParameter($directory)
             ]);
-            echo '&emsp;<a href="'.$url.'"><i class="far fa-trash-alt"></i></a></div>';
+            echo '&emsp;<a href="' . $url . '"><i class="far fa-trash-alt"></i></a></div>';
         }
     }
 }
@@ -154,13 +153,13 @@ function printBackwardsLink()
 {
     global $directory;
 
-    if($directory['directory'] !== '.') {
+    if ($directory['directory'] !== '.') {
         preg_match_all('/(.+)\//m', $directory['directory'], $matches, PREG_SET_ORDER, 0);
         $last = sizeof($matches) > 0 ? $matches[0][1] : '.';
         $last = base64_encode(json_encode([
             'directory' => $last
         ]));
-        echo '<a href="?directory='.$last.'" class="panel-block is-active"><span class="panel-icon"><i class="far fa-folder-open"></i></span>..</a>';
+        echo '<a href="?directory=' . $last . '" class="panel-block is-active"><span class="panel-icon"><i class="far fa-folder-open"></i></span>..</a>';
     }
 }
 
@@ -171,7 +170,7 @@ function printBackwardsLink()
  */
 function redirectIfNotSigned()
 {
-    if(!isset($_SESSION['logged'])) {
+    if (!isset($_SESSION['logged'])) {
         header('Location: login.php');
         die();
     }
@@ -199,11 +198,12 @@ function url(array $array = []): string
  * @param string $directory
  * @return void
  */
-function deleteTree(string $directory) {
-    $files = array_diff(scandir($directory), array('.','..'));
+function deleteTree(string $directory)
+{
+    $files = array_diff(scandir($directory), array('.', '..'));
 
     foreach ($files as $file) {
         (is_dir("$directory/$file")) ? deleteTree("$directory/$file") : unlink("$directory/$file");
     }
     return rmdir($directory);
-} 
+}

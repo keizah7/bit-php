@@ -11,6 +11,6 @@ $users              = [
     'admin' => '$2y$10$WhXSJoLJy8gMXtp4YBz2hOjlCbU3c2FyFmhXJYc8xmU.oYa/B4d.q'
 ];
 $directory          = isset($_GET['directory']) ? decodeParameter($_GET['directory']) : ['directory' => DEFAULT_PATH];
-$currentDirectory   = is_dir($directory['directory']) ? $directory['directory']: DEFAULT_PATH;
+$currentDirectory   = is_dir($directory['directory']) ? $directory['directory'] : DEFAULT_PATH;
 $files              = createDirTreeFrom($currentDirectory);
 $breadcrumb         = $directory['directory'] . DIRECTORY_SEPARATOR;

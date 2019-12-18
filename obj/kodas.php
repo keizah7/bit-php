@@ -21,7 +21,7 @@ spl_autoload_register(function ($class) {
     _dc($file);
     if (file_exists($file)) {
 
-        
+
         require $file;
     }
 });

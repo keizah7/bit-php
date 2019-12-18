@@ -6,7 +6,7 @@ Sugeneruokite skaičių nuo 0 iki 300. Tai papildomos sekundės. Skaičių prid�
 Atspausdinkite laikrodį prieš ir po sekundžių pridėjimo ir pridedamų sekundžių skaičių. */
 echo '<b>10. </b>';
 
-$seconds    = rand(0, 60*60*23);
+$seconds    = rand(0, 60 * 60 * 23);
 $s          = rand(0, 30);
 
 printTime($seconds);
@@ -19,7 +19,8 @@ printTime($seconds + $s);
  * @param int $time
  * @return void
  */
-function printTime($time){
+function printTime($time)
+{
     $hours      = floor($time / 3600);
     $minutes    = floor(($time - ($hours * 3600)) / 60);
     $seconds    = floor(($time - ($hours * 3600)) - ($minutes * 60));
@@ -34,8 +35,9 @@ function printTime($time){
  * @param int $number
  * @return string|int
  */
-function numberFormat($number){
-    if($number < 10) return '0'.$number;
+function numberFormat($number)
+{
+    if ($number < 10) return '0' . $number;
     else return $number;
 }
 
@@ -60,7 +62,8 @@ echo "$first $second $third $fourth $fith $sixth";
  *
  * @return int
  */
-function randomNumber() {
+function randomNumber()
+{
     $min = 1000;
     $max = 9999;
 
@@ -73,23 +76,24 @@ function randomNumber() {
  * @param int $number
  * @return void
  */
-function sortNumber($number){
+function sortNumber($number)
+{
     global $one, $two, $three, $four, $five, $six, $first, $second, $third, $fourth, $fith, $sixth;
     $place = 6;
 
-    if($number > $one) $place--;
-    if($number > $two) $place--;
-    if($number > $three) $place--;
-    if($number > $four) $place--;
-    if($number > $five) $place--;
-    if($number > $six) $place--;
+    if ($number > $one) $place--;
+    if ($number > $two) $place--;
+    if ($number > $three) $place--;
+    if ($number > $four) $place--;
+    if ($number > $five) $place--;
+    if ($number > $six) $place--;
 
-    if($place == 1) $first = $number;
-    if($place == 2) $second = $number;
-    if($place == 3) $third = $number;
-    if($place == 4) $fourth = $number;
-    if($place == 5) $fith = $number;
-    if($place == 6) $sixth = $number;
+    if ($place == 1) $first = $number;
+    if ($place == 2) $second = $number;
+    if ($place == 3) $third = $number;
+    if ($place == 4) $fourth = $number;
+    if ($place == 5) $fith = $number;
+    if ($place == 6) $sixth = $number;
 }
 
 /**
@@ -97,7 +101,8 @@ function sortNumber($number){
  *
  * @return void
  */
-function sortNumbers(){
+function sortNumbers()
+{
     global $one, $two, $three, $four, $five, $six;
 
     sortNumber($one);

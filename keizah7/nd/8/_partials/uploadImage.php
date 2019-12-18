@@ -6,7 +6,7 @@
         <div class="panel-block">
             <div class="columns">
                 <div class="column">
-                    <form action="<?=url()?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= url() ?>" method="post" enctype="multipart/form-data">
                         <div class="field has-addons">
                             <div id="file-js-example" class="file has-name">
                                 <label class="file-label">
@@ -22,7 +22,8 @@
                                     <span class="file-name">nuotrauką..</span>
                                 </label>
                             </div>
-                            <input name="directory" type="hidden" value="<?=$directory['directory'] // uzkoduoti ?>">
+                            <input name="directory" type="hidden" value="<?= $directory['directory'] // uzkoduoti 
+                                                                            ?>">
 
                             <div class="control">
                                 <button type="submit" class="button is-info">Įkelti</button>
@@ -32,8 +33,8 @@
                             </div>
                         </div>
                     </form>
-                    <p class="help is-danger has-text-left"><?=isset($_SESSION['error']) ? $_SESSION['error'] : ''?></p>
-                    <p class="help is-success has-text-left"><?=isset($_SESSION['notification']) ? $_SESSION['notification'] : ''?></p>
+                    <p class="help is-danger has-text-left"><?= isset($_SESSION['error']) ? $_SESSION['error'] : '' ?></p>
+                    <p class="help is-success has-text-left"><?= isset($_SESSION['notification']) ? $_SESSION['notification'] : '' ?></p>
                 </div>
             </div>
         </div>

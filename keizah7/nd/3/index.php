@@ -20,7 +20,8 @@ echo '<br>' . implode(' ', $numbers); // print random 50 numbers between 1 - 200
  * @param int $value
  * @return int
  */
-function primeNumber($value) {
+function primeNumber($value)
+{
     $dividers = 0;
     for ($i = 1; $i <= $value; $i++) if ($value % $i == 0) $dividers++;
     if ($dividers < 3 && $value > 1) return $value;
