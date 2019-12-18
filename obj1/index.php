@@ -4,5 +4,5 @@ require 'vendor/autoload.php';
 
 
 _dc(ColorMixer\Maker::BlueMix());
-
-new ColorMixer\Maker;
+_dc(ColorMixer\Maker::RedMix());
+// new ColorMixer\Maker;
