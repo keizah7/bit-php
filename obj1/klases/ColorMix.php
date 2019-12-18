@@ -3,6 +3,8 @@ namespace ColorMixer;
 
 abstract class ColorMix
 {
+    use Red;
+    
     public static function BlueMix()
     {
         return [rand(1,100), rand(1,100), static::Rotate(30)];
