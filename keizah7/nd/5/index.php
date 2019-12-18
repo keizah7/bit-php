@@ -1,17 +1,5 @@
 <?php
 
-// Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
-
-// foreach (range(0, 9) as $value) {
-//     foreach (range(0, 4) as $kid) {
-//         $array[$value][] = rand(5, 25);
-//     }
-// }
-
-// _dd($array);
-
-
-/*************************************** */
 // 11. Duotas kodas, generuojantis masyvą:
 do {
     $a = rand(0, 1000);
@@ -77,9 +65,7 @@ else echo '<h3>Skaičius ' . $a . ' yra pakartotas ' . $k1 . ' kartų, o ' . $b 
 // $sk2 = $i - $sk1;
 
 // echo "<h3>Skaičius $a yra pakartotas $sk1 kartų, o $b - $sk2 kartų.</h3>";
-
-
-
+/*********************************************************************************************************************** */
 // 1. Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
 
 $array = [];
@@ -105,3 +91,4 @@ foreach (range(1, 10) as $key => $value) {
 
 // _dc($array);
 echo $biggerThanTen;
+echo $max;

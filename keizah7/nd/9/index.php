@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-
 /* 1. Sukurti klasę Piniginė. Sukurti dvi privačias savybes popieriniaiPinigai ir metaliniaiPinigai.
 Parašyti metodą ideti($kiekis), kuris prideda pinigus į piniginę.
 Jeigu kiekis nedidesnis už 2, tai prideda prie metaliniaiPinigai, jeigu didesnis nei 2 prie popieriniaiPinigai.
