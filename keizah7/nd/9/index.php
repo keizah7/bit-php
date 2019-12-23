@@ -76,14 +76,14 @@ Eiti grybauti, t.y. Kurti naujus Grybas objektus, jeigu nesukirmijęs ir valgoma
 
 class Grybas
 {
-    public $valgomas, $sukirmijes, $svoris;
+    private $valgomas, $sukirmijes, $svoris;
 
     public function __construct()
     {
-        $array = [
-            true,
-            false,
-        ];
+        // $array = [
+        //     true,
+        //     false,
+        // ];
 
         $this->valgomas = rand(0, 1); //$array[array_rand($array)];
         $this->sukirmijes = rand(0, 1); //$array[array_rand($array, 1)];
@@ -94,17 +94,22 @@ class Grybas
     {
         return $this->valgomas && !$this->sukirmijes;
     }
+
+    public function getSvoris()
+    {
+        return $this->svoris;
+    }
 }
 
 class Krepsys
 {
     private $turinys, $svoris;
 
-    public function ideti($value)
+    public function ideti($grybas)
     {
         if ($this->svoris < 500) {
-            $this->svoris += $value->svoris;
-            $this->turinys[] = $value;
+            $this->svoris += $grybas->getSvoris();
+            $this->turinys[] = $grybas;
 
             return true;
         } else {
