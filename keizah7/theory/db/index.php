@@ -1,20 +1,19 @@
-<?php require 'db.php'; ?>
-
 <?php
+
+require 'db.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 
 if (!empty($id)) {
     $data = $db->prepare('SELECT * FROM posts WHERE id = ?');
-    // $data = $db->query("SELECT * FROM posts WHERE id = '$id'");
+    // $data = $db->query("SELECT * FROM posts WHERE id = '$id'"); // naudoti tik be parametru
     $data->execute([$id]);
-
     $irasas = $data->fetch();
 
     echo $irasas['title'] . ' - ' . $irasas['description'] . '<br>';
-
     echo '<a href="delete.php?id=' . $id . '">Istrinti</a>';
 ?>
+
     <hr>
     <form action="update.php" method="post">
         <label for="title">Pavadinimas:</label><br>
@@ -25,10 +24,8 @@ if (!empty($id)) {
 
         <input type="submit" value="Atnaujinti įrašą">
     </form>
+
 <?php
-
-
-
     exit;
 }
 
@@ -53,6 +50,7 @@ while ($read = $data->fetch()) {
 
 
 ?>
+
 <form action="" method="post">
     <label for="title">Pavadinimas:</label><br>
     <input type="text" name="title"><br>
