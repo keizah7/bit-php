@@ -1,5 +1,5 @@
 <?php
-
+require 'Passenger.php';
 require 'Bus.php';
 require 'Stop.php';
 
@@ -10,7 +10,7 @@ foreach (range(1, 5) as $index) {
 }
 
 
-while(Stop::getAllGnoms()) {
+while(Stop::getAllPassengers()) {
     $bus = Bus::getBus();
     var_dump($bus);
     _dc($stops);

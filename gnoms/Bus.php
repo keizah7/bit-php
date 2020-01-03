@@ -11,7 +11,7 @@ class Bus
     ];
 
 
-    private $passengers = 0, $isFast, $capacity, $return = false;
+    private $passengers = [], $seats = 0, $isFast, $capacity, $return = false;
     public static $allBuses = [];
 
     static public function getBus()
@@ -45,23 +45,24 @@ class Bus
 
     public function isFull()
     {
-        return ($this->capacity == $this->passengers);
+        return ($this->capacity == $this->seats);
     }
 
     public function getSeatsLeft()
     {
-        return $this->capacity - $this->passengers;
+        return $this->capacity - $this->seats;
     }
 
-    public function addPassegers($count)
+
+
+    public function add(Passenger $passenger)
     {
-        if (($this->passengers + $count) <= $this->capacity) {
-            $this->passengers += $count;
+        if ($this->getSeatsLeft() >= $passenger->getAss()) {
+            $this->seats += $passenger->getAss();
+            $this->passengers[] = $passenger;
+            return true;
         }
-        else {
-            die('BLOGAI');
-        }
-        
+        return false;
     }
 
 
