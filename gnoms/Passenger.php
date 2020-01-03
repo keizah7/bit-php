@@ -4,7 +4,9 @@ class Passenger
 {
     const TYPES = [
         'Goblin' => 5,
-        'Gnom' => 1
+        'Gnom' => 1,
+        'Elf' => 3,
+        'Katunskyte' => 21
     ];
 
     private $type;
