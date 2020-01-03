@@ -13,8 +13,8 @@ class Stop
     {
         $this->gnoms = rand(0, self::MAX_GNOMS);
         self::addGnoms($this->gnoms);
-
         $this->fastStop = (rand(0, 1)) ? true : false;
+
     }
 
     public static function getAllGnoms()
@@ -34,6 +34,8 @@ class Stop
 
     public function busArrived(Bus $bus)
     {
+        $bus->setReturn();
+
         if ($bus->isFast() && !$this->fastStop) {
             return;
         }

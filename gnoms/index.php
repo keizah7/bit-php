@@ -9,8 +9,13 @@ foreach (range(1, 5) as $index) {
     $stops[$index] = new Stop;
 }
 
+
 while(Stop::getAllGnoms()) {
     $bus = Bus::getBus();
+    var_dump($bus);
+    _dc($stops);
+
+    
 
     foreach ($stops as $stop) {
         $stop->busArrived($bus);
@@ -18,5 +23,5 @@ while(Stop::getAllGnoms()) {
 
 }
 
-_dc($stops);
+
 _dc(Bus::$allBuses);

@@ -11,7 +11,7 @@ class Bus
     ];
 
 
-    private $passengers = 0, $isFast, $capacity;
+    private $passengers = 0, $isFast, $capacity, $return = false;
     public static $allBuses = [];
 
     static public function getBus()
@@ -23,7 +23,7 @@ class Bus
         $count = count(self::$allBuses);
         $lastBus = self::$allBuses[$count-1];
 
-        if ($lastBus->isFull()) {
+        if ($lastBus->isFull() || $lastBus->return) {
             return new self;
         }
         return $lastBus;
@@ -62,6 +62,12 @@ class Bus
             die('BLOGAI');
         }
         
+    }
+
+
+    public function setReturn()
+    {
+        $this->return = true;
     }
 
 
