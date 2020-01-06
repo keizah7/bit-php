@@ -66,24 +66,48 @@ if (isset($_GET['action']) && $_GET['action'] == 'add-account') {
 
 }
 
-if (isset($_GET['action']) && $_GET['action'] == 'add') {
+if (isset($_GET['action']) && $_GET['action'] == 'add-amount') {
     if (!empty($_POST)) {
         Bankas::addAmmount($_POST, $_GET['id']);
         header('Location: http://localhost/10/bankas2');
         die();
     }
-    $user = Bankas::getUser($_GET['id']);
+    // $user = Bankas::getUser($_GET['id']);
     ?>
     
-    <h2>Add Money to:
+    <!-- <h2>Add Money to:
         <?= $user['firstname'] ?>
         <?= $user['lastname'] ?>
-    </h2>
+    </h2> -->
     <form action="" method="post">
     Amount:<br>
     <input type="text" name="amount">
     <br><br>
     <input type="submit" value="Add">
+    </form> 
+
+    <?php
+}
+
+
+if (isset($_GET['action']) && $_GET['action'] == 'minus-amount') {
+    if (!empty($_POST)) {
+        Bankas::minusAmmount($_POST, $_GET['id']);
+        header('Location: http://localhost/10/bankas2');
+        die();
+    }
+    // $user = Bankas::getUser($_GET['id']);
+    ?>
+    
+    <!-- <h2>Add Money to:
+        <?= $user['firstname'] ?>
+        <?= $user['lastname'] ?>
+    </h2> -->
+    <form action="" method="post">
+    Amount:<br>
+    <input type="text" name="amount">
+    <br><br>
+    <input type="submit" value="MINUS">
     </form> 
 
     <?php

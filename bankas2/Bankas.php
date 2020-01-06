@@ -54,13 +54,41 @@ class Bankas
 
     public static function addAmmount($post, $id)
     {
-        $user = self::getUser($id);
-        $now = $user['amount'];
+        $account = self::getAccount($id);
+        $now = $account['amount'];
         
         $pdo = Mysql::db(); // gauname duomenu baze
-        $sql = "UPDATE users SET amount = ? WHERE id = ?";
+        $sql = "UPDATE accounts SET amount = ? WHERE id = ?";
         $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
         $stmt->execute([$now+$post['amount'], $id]);// vykdome uzklausa. steitmente pasilieka rezultatai
         
+    }
+
+
+    public static function minusAmmount($post, $id)
+    {
+        $account = self::getAccount($id);
+        $now = $account['amount'];
+
+        if ($now < $post['amount']) {
+            return;
+        }
+        
+        $pdo = Mysql::db(); // gauname duomenu baze
+        $sql = "UPDATE accounts SET amount = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
+        $stmt->execute([$now-$post['amount'], $id]);// vykdome uzklausa. steitmente pasilieka rezultatai
+        
+    }
+
+
+    public static function getAccount($id)
+    {
+        $pdo = Mysql::db(); // gauname duomenu baze
+        $sql = "SELECT * FROM accounts WHERE id = ?";
+        $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
+        $stmt->execute([$id]);// vykdome uzklausa. steitmente pasilieka rezultatai
+        return $stmt->fetch(); //isimame rezultatus is steitmento
+
     }
 }
