@@ -5,6 +5,19 @@ class Bankas
     public static function addUser($post)
     {
         $pdo = Mysql::db(); // gauname duomenu baze
+
+        //TIKRINAME asmens koda
+        $sql = "SELECT * FROM users WHERE personalcode = ?";
+        $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
+        $stmt->execute([$post['personalcode']]);// vykdome uzklausa. steitmente pasilieka rezultatai
+        $user =  $stmt->fetch(); //isimame rezultatus is steitmento
+
+        if ($user) {
+            $_SESSION['message'] = 'Tokis vartotojas jau egzistuoja musu graziajame banke.';
+            return;
+        }
+
+
         $sql = "INSERT INTO users (firstname, lastname, personalcode) VALUES (?, ?, ?)"; // pasirasome uzklausa
         $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
         $stmt->execute( [ 
@@ -71,6 +84,7 @@ class Bankas
         $now = $account['amount'];
 
         if ($now < $post['amount']) {
+            $_SESSION['message'] = 'Saskaitoje mazokai pinigu.';
             return;
         }
         

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require 'Bankas.php';
 require 'Mysql.php';
 
@@ -7,7 +7,19 @@ require 'Mysql.php';
 <h3 style="display:inline-block;">Menu:</h3>
 <a href="?action=new">Add New User</a>
 <a href="?action=list">List All Users</a>
+
 <?php
+
+if (isset($_SESSION['message']) && $_SESSION['message']) {
+    $message = $_SESSION['message'];
+    $_SESSION['message'] = '';
+    ?>
+    <div class="message" style="margin:20px;padding:10px;border:3px dotted red;">
+    <?= $message ?>
+    </div>
+    <?php
+}
+
 
 if (isset($_GET['action']) && $_GET['action'] == 'list') {
     $all = Bankas::allUsers($_POST);
@@ -72,13 +84,18 @@ if (isset($_GET['action']) && $_GET['action'] == 'add-amount') {
         header('Location: http://localhost/10/bankas2');
         die();
     }
-    // $user = Bankas::getUser($_GET['id']);
+    $account = Bankas::getAccount($_GET['id']);
+    $user = Bankas::getUser($account['user_id']);
+
     ?>
     
-    <!-- <h2>Add Money to:
+    <h2>Now in account:
+        <?= $account['amount'] ?>
+    </h2>
+    <h2>THIS account belongs to:
         <?= $user['firstname'] ?>
         <?= $user['lastname'] ?>
-    </h2> -->
+    </h2>
     <form action="" method="post">
     Amount:<br>
     <input type="text" name="amount">
