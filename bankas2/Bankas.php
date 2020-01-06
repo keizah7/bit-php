@@ -2,7 +2,7 @@
 
 class Bankas
 {
-    public static function addAccount($post)
+    public static function addUser($post)
     {
         $pdo = Mysql::db(); // gauname duomenu baze
         $sql = "INSERT INTO users (firstname, lastname, personalcode) VALUES (?, ?, ?)"; // pasirasome uzklausa
@@ -14,13 +14,32 @@ class Bankas
         ] );
 
     }
+    
+    public static function addAccount($post, $id)
+    {
+       
+        $pdo = Mysql::db(); // gauname duomenu baze
+        $sql = "INSERT INTO accounts (user_id) VALUES (?)"; // pasirasome uzklausa
+        $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
+        $stmt->execute([$id]);// vykdome uzklausa. steitmente pasilieka rezultatai
+        
+    }
 
-    public static function allAccounts($post)
+    public static function allUsers($post)
     {
         $pdo = Mysql::db(); // gauname duomenu baze
         $sql = "SELECT * FROM users";
         $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
         $stmt->execute();// vykdome uzklausa. steitmente pasilieka rezultatai
+        return $stmt->fetchAll(); //isimame rezultatus is steitmento
+    }
+
+    public static function allAccounts($post, $id)
+    {
+        $pdo = Mysql::db(); // gauname duomenu baze
+        $sql = "SELECT * FROM accounts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);// uzklausa pateikiame, bet nevykdome
+        $stmt->execute([$id]);// vykdome uzklausa. steitmente pasilieka rezultatai
         return $stmt->fetchAll(); //isimame rezultatus is steitmento
     }
 
