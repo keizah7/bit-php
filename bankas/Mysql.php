@@ -4,17 +4,17 @@ class Mysql
 {
     private static $PDO; // PDO objektas
 
-    public static function db() 
+    public static function db()
     {
         if (self::$PDO) {
             return self::$PDO;
         }
         $host = 'localhost';
-        $db   = 'bankas';
+        $db   = 'laravel';
         $user = 'root';
         $pass = '123';
         $charset = 'utf8mb4';
-        
+
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -24,8 +24,7 @@ class Mysql
         try {
             return self::$PDO = new PDO($dsn, $user, $pass, $options);
         } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
-
 }

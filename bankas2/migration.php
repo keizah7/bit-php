@@ -2,16 +2,15 @@
 
 require 'Mysql.php';
 
-
 $pdo = Mysql::db();
+
 
 $sql = "DROP TABLE IF EXISTS accounts";
 $pdo->query($sql);
 
+
 $sql = "DROP TABLE IF EXISTS users";
 $pdo->query($sql);
-
-
 
 
 $sql = "CREATE TABLE users (
@@ -21,7 +20,6 @@ lastname VARCHAR(30) NOT NULL,
 personalcode CHAR(11) NOT NULL UNIQUE
 )";
 $pdo->query($sql);
-
 
 
 $sql = "CREATE TABLE accounts (

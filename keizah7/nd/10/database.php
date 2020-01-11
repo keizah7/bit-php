@@ -1,7 +1,7 @@
 <?php
 
 $host = '127.0.0.1';
-$db   = 'bankas';
+$db   = 'laravel';
 $user = 'keizah';
 $pass = 'laravel';
 $charset = 'utf8mb4';

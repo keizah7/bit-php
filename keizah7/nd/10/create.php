@@ -3,23 +3,38 @@
 session_start();
 require 'database.php';
 require 'Account.php';
+require 'Client.php';
 
 $acc = new Account($pdo);
+$client = new Client($pdo);
 
 if (!empty($_POST)) {
     if (!empty($_POST['firstname']) && !empty($_POST['lastname'])) {
         $arr = [$_POST['firstname'], $_POST['lastname']];
 
-        if ($acc->getByFirstNameAndLastname($arr)) {
-            $_SESSION['notification'] = 'Account already exist';
-        } else {
+        // if ($acc->getByFirstNameAndLastname($arr)) {
+        //     $_SESSION['notification'] = 'Account already exist';
+        // } else {
+        $client->create([
+            $_POST['firstname'],
+            $_POST['lastname'],
+        ]);
+
+        $acc->create([
+            $client->lastId(),
+            0,
+        ]);
+
+
+        // _dc($client->lastInsertedId);
+        /*
             $acc->create([
                 $_POST['firstname'],
                 $_POST['lastname'],
                 0,
-            ]);
-            $_SESSION['notification'] = 'Account is created successfully';
-        }
+            ]);*/
+        //     $_SESSION['notification'] = 'Account is created successfully';
+        // }
     } else {
         $_SESSION['notification'] = 'Fields can\' be empty';
     }
